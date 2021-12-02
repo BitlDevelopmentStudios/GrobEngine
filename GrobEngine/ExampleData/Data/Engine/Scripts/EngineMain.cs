@@ -4,17 +4,15 @@ using Microsoft.Xna.Framework;
 
 public class EngineMain : IGame
 {
-	private IGame textureLoader;
-	private IGame inputTest;
+	private IGame gameMain;
 	
 	public EngineMain() {}
 	
 	public void Initialize(GrobEngineMain game)
     {
-		Console.WriteLine("Script Initialize");
-		textureLoader = ScriptEngine.LoadScriptFromContent("Game/Scripts/TextureLoad.cs", game.Content);
-		inputTest = ScriptEngine.LoadScriptFromContent("Game/Scripts/InputTest.cs", game.Content);
-		
+		Console.WriteLine("Engine Initialize");
+		gameMain = ScriptEngine.LoadScriptFromContent("Game/Scripts/GameMain.cs", game.Content);
+		gameMain.Initialize(game);
 		ApplyVideoSettings(game, 1280, 720, false, false);
     }
 	
@@ -42,24 +40,21 @@ public class EngineMain : IGame
 	
 	public void LoadContent(GrobEngineMain game)
     {
-		Console.WriteLine("Script LoadContent");
-        textureLoader.LoadContent(game);
+        gameMain.LoadContent(game);
     }
 
     public void UnloadContent(GrobEngineMain game)
     {
-		Console.WriteLine("Script UnloadContent");
-        textureLoader.UnloadContent(game);
+        gameMain.UnloadContent(game);
     }
 	
-	public void Update(GrobEngineMain game, GameTime gameTime)
-    {
-		inputTest.Update(game, gameTime);
-    }
+	public void Update(GrobEngineMain game, GameTime gameTime) 
+	{ 
+		gameMain.Update(game, gameTime);
+	}
 
-    public void Draw(GrobEngineMain game, GameTime gameTime)
-    {
-        game.GraphicsDevice.Clear(Color.Red);
-        textureLoader.Draw(game, gameTime);
-    }
+    public void Draw(GrobEngineMain game, GameTime gameTime) 
+	{ 
+		gameMain.Draw(game, gameTime);
+	}
 }

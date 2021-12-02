@@ -113,7 +113,7 @@ error:
             return result.CompiledAssembly;
         }
 
-        private static void ErrorHandler(string error, bool finalError)
+        public static void ErrorHandler(string error, bool finalError =  false)
         {
             ErrorHandler(error, false, finalError);
         }

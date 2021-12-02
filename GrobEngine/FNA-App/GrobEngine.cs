@@ -48,42 +48,91 @@ namespace GrobEngine
         #region Functions
         protected override void Initialize()
         {
-            mainScript.Initialize(this);
-            base.Initialize();
+            try
+            {
+                mainScript.Initialize(this);
+                base.Initialize();
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         private void OnDeviceCreated(object sender, EventArgs e)
         {
-            mainScript.OnDeviceCreated(this, sender, e);
+            try
+            {
+                mainScript.OnDeviceCreated(this, sender, e);
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         private void OnDeviceReset(object sender, EventArgs e)
         {
-            mainScript.OnDeviceReset(this, sender, e);
+            try
+            {
+                mainScript.OnDeviceReset(this, sender, e);
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         protected override void LoadContent()
         {
-            mainScript.LoadContent(this);
-            base.LoadContent();
+            try
+            {
+                mainScript.LoadContent(this);
+                base.LoadContent();
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         protected override void UnloadContent()
         {
-            mainScript.UnloadContent(this);
-            base.UnloadContent();
+            try
+            {
+                mainScript.UnloadContent(this);
+                base.UnloadContent();
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         protected override void Update(GameTime gameTime)
         {
-            mainScript.Update(this, gameTime);
-            base.Update(gameTime);
+            try
+            {
+                mainScript.Update(this, gameTime);
+                base.Update(gameTime);
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            mainScript.Draw(this, gameTime);
-            base.Draw(gameTime);
+            try
+            {
+                mainScript.Draw(this, gameTime);
+                base.Draw(gameTime);
+            }
+            catch (Exception ex)
+            {
+                ScriptEngine.ErrorHandler(ex.Message, true);
+            }
         }
         #endregion
     }
