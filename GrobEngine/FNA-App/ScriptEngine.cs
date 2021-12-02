@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Usings
+using System;
 using System.Reflection;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
@@ -6,10 +7,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
 using System.Linq;
+#endregion
 
 // based on https://stackoverflow.com/questions/137933/what-is-the-best-scripting-language-to-embed-in-a-c-sharp-desktop-application
 namespace GrobEngine
 {
+    #region IGame
     public interface IGame
     {
         void Initialize(GrobEngineMain game);
@@ -20,7 +23,9 @@ namespace GrobEngine
         void Update(GrobEngineMain game, GameTime gameTime);
         void Draw(GrobEngineMain game, GameTime gameTime);
      }
+    #endregion
 
+    #region ScriptEngine
     public class ScriptEngine
     {
         public static IGame LoadScriptFromContent(string scriptpath, ContentManager content)
@@ -138,4 +143,5 @@ error:
             }
         }
     }
+    #endregion
 }

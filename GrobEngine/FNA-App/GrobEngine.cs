@@ -1,10 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿#region Usings
+using Microsoft.Xna.Framework;
 using System;
+#endregion
 
 namespace GrobEngine
 {
+    #region GrobEngineMain
     public class GrobEngineMain : Game
     {
+        #region Main Loop
         static void Main(string[] args)
         {
             // begin engine loop
@@ -13,11 +17,15 @@ namespace GrobEngine
                 g.Run();
             }
         }
+        #endregion
 
+        #region Private Variables
         //the main engine script.
         private IGame mainScript;
         public GraphicsDeviceManager graphics;
+        #endregion
 
+        #region Constructor
         private GrobEngineMain() : base()
         {
             //set the content root directory.
@@ -35,7 +43,9 @@ namespace GrobEngine
             graphics.DeviceCreated += OnDeviceCreated;
             graphics.DeviceReset += OnDeviceReset;
         }
+        #endregion
 
+        #region Functions
         protected override void Initialize()
         {
             mainScript.Initialize(this);
@@ -75,5 +85,7 @@ namespace GrobEngine
             mainScript.Draw(this, gameTime);
             base.Draw(gameTime);
         }
+        #endregion
     }
+    #endregion
 }
