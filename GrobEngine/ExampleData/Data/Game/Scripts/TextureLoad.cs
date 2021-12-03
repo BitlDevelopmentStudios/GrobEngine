@@ -10,24 +10,21 @@ public class TextureLoad : IObject
 	
 	public TextureLoad() {}
 	
-	public void Initialize(GrobEngineMain game) {}
-	public void Update(GrobEngineMain game, GameTime gameTime) {}
-	
-	public void LoadContent(GrobEngineMain game)
+	public override void LoadContent(GrobEngineMain game)
 	{
 		Console.WriteLine("Load Texture");
 		batch = new SpriteBatch(game.GraphicsDevice);
 		texture = game.Content.Load<Texture2D>("Game/Textures/Texture.png");
 	}
 	
-	public void UnloadContent(GrobEngineMain game)
+	public override void UnloadContent(GrobEngineMain game)
 	{
 		Console.WriteLine("Unload Texture");
 		batch.Dispose();
 		texture.Dispose();
 	}
 	
-	public void Draw(GrobEngineMain game, GameTime gameTime)
+	public override void Draw(GrobEngineMain game, GameTime gameTime)
 	{
 		batch.Begin();
 		batch.Draw(texture, Vector2.Zero, Color.White);

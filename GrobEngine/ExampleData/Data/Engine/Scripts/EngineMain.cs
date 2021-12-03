@@ -8,7 +8,7 @@ public class EngineMain : IEngine
 	
 	public EngineMain() {}
 	
-	public void Initialize(GrobEngineMain game)
+	public override void Initialize(GrobEngineMain game)
     {
 		Console.WriteLine("Engine Initialize");
 		gameMain = (IObject)ScriptEngine.LoadScriptFromContent("Game/Scripts/GameMain.cs", game.Content);
@@ -28,32 +28,32 @@ public class EngineMain : IEngine
 		game.graphics.ApplyChanges();
 	}
 	
-	public void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e)
+	public override void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e)
     {
 		Console.WriteLine("Graphics Device Created");
 	}
 	
-	public void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e)
+	public override void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e)
     {
 		Console.WriteLine("Graphics Device Reset");
     }
 	
-	public void LoadContent(GrobEngineMain game)
+	public override void LoadContent(GrobEngineMain game)
     {
         gameMain.LoadContent(game);
     }
 
-    public void UnloadContent(GrobEngineMain game)
+    public override void UnloadContent(GrobEngineMain game)
     {
         gameMain.UnloadContent(game);
     }
 	
-	public void Update(GrobEngineMain game, GameTime gameTime) 
+	public override void Update(GrobEngineMain game, GameTime gameTime) 
 	{ 
 		gameMain.Update(game, gameTime);
 	}
 
-    public void Draw(GrobEngineMain game, GameTime gameTime) 
+    public override void Draw(GrobEngineMain game, GameTime gameTime) 
 	{ 
 		gameMain.Draw(game, gameTime);
 	}

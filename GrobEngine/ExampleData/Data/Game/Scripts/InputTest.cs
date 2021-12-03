@@ -11,15 +11,7 @@ public class InputTest : IObject
 	
 	public InputTest() {}
 	
-	public void Initialize(GrobEngineMain game) 
-	{
-		Console.WriteLine("TEST");
-	}
-	public void LoadContent(GrobEngineMain game) {}
-	public void UnloadContent(GrobEngineMain game) {}
-	public void Draw(GrobEngineMain game, GameTime gameTime) {}
-	
-	public void Update(GrobEngineMain game, GameTime gameTime) 
+	public override void Update(GrobEngineMain game, GameTime gameTime) 
 	{
 		// Poll input
 		KeyboardState keyboardCur = Keyboard.GetState();

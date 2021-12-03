@@ -4,21 +4,21 @@ using Microsoft.Xna.Framework;
 namespace GrobEngine
 {
     #region IGame
-    public interface IObject
+    public class IObject
     {
-        void Initialize(GrobEngineMain game);
-        void LoadContent(GrobEngineMain game);
-        void UnloadContent(GrobEngineMain game);
-        void Update(GrobEngineMain game, GameTime gameTime);
-        void Draw(GrobEngineMain game, GameTime gameTime);
+        public virtual void Initialize(GrobEngineMain game) { }
+        public virtual void LoadContent(GrobEngineMain game) { }
+        public virtual void UnloadContent(GrobEngineMain game) { }
+        public virtual void Update(GrobEngineMain game, GameTime gameTime) { }
+        public virtual void Draw(GrobEngineMain game, GameTime gameTime) { }
     }
     #endregion
 
     #region IEngine
-    public interface IEngine : IObject
+    public class IEngine : IObject
     {
-        void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e);
-        void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e);
+        public virtual void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e) { }
+        public virtual void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e) { }
     }
     #endregion
 }

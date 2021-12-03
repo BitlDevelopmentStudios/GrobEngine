@@ -27,7 +27,7 @@ namespace GrobEngine
                     {
                         string script = reader.ReadToEnd();
                         Assembly compiled = CompileScript(script, fullScriptPath);
-                        object code = ExecuteScript(compiled);
+                        object code = ExecuteScript(compiled, fullScriptPath);
                         return code;
                     }
                 }
@@ -40,7 +40,7 @@ namespace GrobEngine
             return null;
         }
 
-        private static object ExecuteScript(Assembly assemblyScript)
+        private static object ExecuteScript(Assembly assemblyScript, string filePath)
         {
             if (assemblyScript == null)
             {
@@ -49,24 +49,24 @@ namespace GrobEngine
 
             foreach (Type type in assemblyScript.GetExportedTypes())
             {
-                foreach (Type iface in type.GetInterfaces())
-                {
-                    ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
+                if (type.IsInterface || type.IsAbstract || type.IsNotPublic)
+                    continue;
 
-                    if (constructor != null && constructor.IsPublic)
-                    {
-                        return constructor.Invoke(null);
-                    }
-                    else
-                    {
-                        ErrorHandler("Constructor does not exist or it is not public.", true);
-                        return null;
-                    }
+                ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
+
+                if (constructor != null && constructor.IsPublic)
+                {
+                    return constructor.Invoke(null);
+                }
+                else
+                {
+                    ErrorHandler(filePath + ": Constructor does not exist or it is not public.", true);
+                    return null;
                 }
             }
 
 error:
-            ErrorHandler("Failed to load script.", true);
+            ErrorHandler(filePath + ": Failed to load script.", true);
             return null;
         }
 

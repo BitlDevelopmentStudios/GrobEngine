@@ -55,7 +55,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("Initialize(): " + ex.Message, true);
             }
         }
 
@@ -67,7 +67,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("OnDeviceCreated(): " + ex.Message, true);
             }
         }
 
@@ -79,7 +79,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("OnDeviceReset(): " + ex.Message, true);
             }
         }
 
@@ -92,7 +92,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("LoadContent(): " + ex.Message, true);
             }
         }
 
@@ -105,7 +105,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("UnloadContent(): " + ex.Message, true);
             }
         }
 
@@ -118,7 +118,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("Update(): " + ex.Message, true);
             }
         }
 
@@ -131,7 +131,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler(ex.Message, true);
+                ScriptEngine.ErrorHandler("Draw(): " + ex.Message, true);
             }
         }
         #endregion
