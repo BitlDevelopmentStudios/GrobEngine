@@ -21,7 +21,7 @@ namespace GrobEngine
 
         #region Private Variables
         //the main engine script.
-        private IGame mainScript;
+        private IEngine mainScript;
         public GraphicsDeviceManager graphics;
         #endregion
 
@@ -32,7 +32,7 @@ namespace GrobEngine
             Content.RootDirectory = "Data";
 
             //load main engine script.
-            IGame tempLoader = ScriptEngine.LoadScriptFromContent("Engine/Scripts/EngineMain.cs", Content);
+            IEngine tempLoader = (IEngine)ScriptEngine.LoadScriptFromContent("Engine/Scripts/EngineMain.cs", Content);
 
             if (tempLoader != null)
             {

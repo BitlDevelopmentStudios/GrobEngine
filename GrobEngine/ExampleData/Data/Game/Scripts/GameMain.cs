@@ -2,18 +2,18 @@ using GrobEngine;
 using System;
 using Microsoft.Xna.Framework;
 
-public class EngineMain : IGame
+public class GameMain : IObject
 {
-	private IGame textureLoader;
-	private IGame inputTest;
+	private IObject textureLoader;
+	private IObject inputTest;
 	
-	public EngineMain() {}
+	public GameMain() {}
 	
 	public void Initialize(GrobEngineMain game)
     {
 		Console.WriteLine("Game Initialize");
-		textureLoader = ScriptEngine.LoadScriptFromContent("Game/Scripts/TextureLoad.cs", game.Content);
-		inputTest = ScriptEngine.LoadScriptFromContent("Game/Scripts/InputTest.cs", game.Content);
+		textureLoader = (IObject)ScriptEngine.LoadScriptFromContent("Game/Scripts/TextureLoad.cs", game.Content);
+		inputTest = (IObject)ScriptEngine.LoadScriptFromContent("Game/Scripts/InputTest.cs", game.Content);
     }
 	
 	public void ApplyVideoSettings(GrobEngineMain game, int width, int height, bool fullscreen, bool vsync)
@@ -27,10 +27,6 @@ public class EngineMain : IGame
 		// Apply!
 		game.graphics.ApplyChanges();
 	}
-	
-	public void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e) { }
-	
-	public void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e) { }
 	
 	public void LoadContent(GrobEngineMain game)
     {

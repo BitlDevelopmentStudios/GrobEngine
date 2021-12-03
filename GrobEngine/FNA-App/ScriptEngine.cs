@@ -12,23 +12,10 @@ using System.Linq;
 // based on https://stackoverflow.com/questions/137933/what-is-the-best-scripting-language-to-embed-in-a-c-sharp-desktop-application
 namespace GrobEngine
 {
-    #region IGame
-    public interface IGame
-    {
-        void Initialize(GrobEngineMain game);
-        void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e);
-        void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e);
-        void LoadContent(GrobEngineMain game);
-        void UnloadContent(GrobEngineMain game);
-        void Update(GrobEngineMain game, GameTime gameTime);
-        void Draw(GrobEngineMain game, GameTime gameTime);
-     }
-    #endregion
-
     #region ScriptEngine
     public class ScriptEngine
     {
-        public static IGame LoadScriptFromContent(string scriptpath, ContentManager content)
+        public static object LoadScriptFromContent(string scriptpath, ContentManager content)
         {
             string fullScriptPath = content.RootDirectory + '/' + scriptpath;
 
@@ -40,20 +27,20 @@ namespace GrobEngine
                     {
                         string script = reader.ReadToEnd();
                         Assembly compiled = CompileScript(script, fullScriptPath);
-                        IGame code = ExecuteScript(compiled);
+                        object code = ExecuteScript(compiled);
                         return code;
                     }
                 }
             }
             catch (Exception ex)
             {
-                ErrorHandler(fullScriptPath + ": " + ex.Message, true);
+                ErrorHandler(fullScriptPath + ": " + ex.ToString(), true);
             }
 
             return null;
         }
 
-        private static IGame ExecuteScript(Assembly assemblyScript)
+        private static object ExecuteScript(Assembly assemblyScript)
         {
             if (assemblyScript == null)
             {
@@ -62,22 +49,18 @@ namespace GrobEngine
 
             foreach (Type type in assemblyScript.GetExportedTypes())
             {
-                foreach (Type intface in type.GetInterfaces())
+                foreach (Type iface in type.GetInterfaces())
                 {
-                    if (intface == typeof(IGame))
-                    {
-                        ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
+                    ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
 
-                        if (constructor != null && constructor.IsPublic)
-                        {
-                            IGame finalScript = constructor.Invoke(null) as IGame;
-                            return finalScript;
-                        }
-                        else
-                        {
-                            ErrorHandler("Constructor does not exist or it is not public.", true);
-                            return null;
-                        }
+                    if (constructor != null && constructor.IsPublic)
+                    {
+                        return constructor.Invoke(null);
+                    }
+                    else
+                    {
+                        ErrorHandler("Constructor does not exist or it is not public.", true);
+                        return null;
                     }
                 }
             }

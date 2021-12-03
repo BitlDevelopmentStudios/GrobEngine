@@ -2,16 +2,16 @@ using GrobEngine;
 using System;
 using Microsoft.Xna.Framework;
 
-public class EngineMain : IGame
+public class EngineMain : IEngine
 {
-	private IGame gameMain;
+	private IObject gameMain;
 	
 	public EngineMain() {}
 	
 	public void Initialize(GrobEngineMain game)
     {
 		Console.WriteLine("Engine Initialize");
-		gameMain = ScriptEngine.LoadScriptFromContent("Game/Scripts/GameMain.cs", game.Content);
+		gameMain = (IObject)ScriptEngine.LoadScriptFromContent("Game/Scripts/GameMain.cs", game.Content);
 		gameMain.Initialize(game);
 		ApplyVideoSettings(game, 1280, 720, false, false);
     }

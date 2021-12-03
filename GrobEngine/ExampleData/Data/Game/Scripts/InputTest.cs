@@ -3,7 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-public class InputTest : IGame
+public class InputTest : IObject
 {
 	private KeyboardState keyboardPrev = new KeyboardState();
 	private MouseState mousePrev = new MouseState();
@@ -15,8 +15,6 @@ public class InputTest : IGame
 	{
 		Console.WriteLine("TEST");
 	}
-	public void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e) {}
-    public void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e) {}
 	public void LoadContent(GrobEngineMain game) {}
 	public void UnloadContent(GrobEngineMain game) {}
 	public void Draw(GrobEngineMain game, GameTime gameTime) {}

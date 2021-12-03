@@ -3,7 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-public class TextureLoad : IGame
+public class TextureLoad : IObject
 {
 	private SpriteBatch batch;
 	private Texture2D texture;
@@ -11,8 +11,6 @@ public class TextureLoad : IGame
 	public TextureLoad() {}
 	
 	public void Initialize(GrobEngineMain game) {}
-	public void OnDeviceCreated(GrobEngineMain game, object sender, EventArgs e) {}
-    public void OnDeviceReset(GrobEngineMain game, object sender, EventArgs e) {}
 	public void Update(GrobEngineMain game, GameTime gameTime) {}
 	
 	public void LoadContent(GrobEngineMain game)
