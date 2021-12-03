@@ -12,8 +12,8 @@ using System.Linq;
 // based on https://stackoverflow.com/questions/137933/what-is-the-best-scripting-language-to-embed-in-a-c-sharp-desktop-application
 namespace GrobEngine
 {
-    #region ScriptEngine
-    public class ScriptEngine
+    #region Script
+    public class Script
     {
         public static object LoadScriptFromContent(string scriptpath, ContentManager content)
         {
@@ -49,7 +49,7 @@ namespace GrobEngine
 
             foreach (Type type in assemblyScript.GetExportedTypes())
             {
-                if (type.IsInterface || type.IsAbstract || type.IsNotPublic)
+                if (type.IsInterface || type.IsAbstract)
                     continue;
 
                 ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);

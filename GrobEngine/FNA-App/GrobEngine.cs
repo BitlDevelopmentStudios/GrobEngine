@@ -32,7 +32,7 @@ namespace GrobEngine
             Content.RootDirectory = "Data";
 
             //load main engine script.
-            IEngine tempLoader = (IEngine)ScriptEngine.LoadScriptFromContent("Engine/Scripts/EngineMain.cs", Content);
+            IEngine tempLoader = (IEngine)Script.LoadScriptFromContent("Engine/Scripts/EngineMain.cs", Content);
 
             if (tempLoader != null)
             {
@@ -55,7 +55,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("Initialize(): " + ex.Message, true);
+                Script.ErrorHandler("Initialize(): " + ex.Message, true);
             }
         }
 
@@ -67,7 +67,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("OnDeviceCreated(): " + ex.Message, true);
+                Script.ErrorHandler("OnDeviceCreated(): " + ex.Message, true);
             }
         }
 
@@ -79,7 +79,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("OnDeviceReset(): " + ex.Message, true);
+                Script.ErrorHandler("OnDeviceReset(): " + ex.Message, true);
             }
         }
 
@@ -92,7 +92,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("LoadContent(): " + ex.Message, true);
+                Script.ErrorHandler("LoadContent(): " + ex.Message, true);
             }
         }
 
@@ -105,7 +105,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("UnloadContent(): " + ex.Message, true);
+                Script.ErrorHandler("UnloadContent(): " + ex.Message, true);
             }
         }
 
@@ -118,7 +118,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("Update(): " + ex.Message, true);
+                Script.ErrorHandler("Update(): " + ex.Message, true);
             }
         }
 
@@ -131,7 +131,7 @@ namespace GrobEngine
             }
             catch (Exception ex)
             {
-                ScriptEngine.ErrorHandler("Draw(): " + ex.Message, true);
+                Script.ErrorHandler("Draw(): " + ex.Message, true);
             }
         }
         #endregion
