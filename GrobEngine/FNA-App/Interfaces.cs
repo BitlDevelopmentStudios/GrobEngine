@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace GrobEngine
 {
-    #region IGame
+    #region IObject
     public class IObject
     {
         public virtual void Initialize(GrobEngineMain game) { }
