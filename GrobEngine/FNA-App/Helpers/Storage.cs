@@ -19,6 +19,19 @@ namespace GrobEngine
 			return container;
 		}
 
+		public static bool DoesConfigFileExist(string iniFile)
+        {
+			StorageContainer container = OpenUserContainerData();
+			if (container.FileExists(iniFile))
+			{
+				return true;
+			}
+			else
+            {
+				return false;
+            }
+		}
+
 		public static string ConfigINI(string iniFile, string section, string setting, string val = "")
 		{
 			StorageContainer container = OpenUserContainerData();
