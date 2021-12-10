@@ -25,11 +25,10 @@ public class EngineMain : IEngine
 		game.graphics.SynchronizeWithVerticalRetrace = vsync;
 		game.graphics.IsFullScreen = fullscreen;
 		
+		Console.WriteLine("Saving and loading config");
 		string configFile = "config.ini";
 		if (!Storage.DoesConfigFileExist(configFile))
 		{
-			Console.WriteLine("Saving and loading config");
-			string configFile = "config.ini";
 			Storage.ConfigINI(configFile, "Settings", "Fullscreen", game.graphics.IsFullScreen.ToString());
 		}
 		
