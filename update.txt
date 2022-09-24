@@ -1,0 +1,2 @@
+git submodule add https://github.com/FNA-XNA/FNA.git GrobEngine/FNA
+git submodule update --init --recursive
