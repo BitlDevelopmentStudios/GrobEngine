@@ -11,6 +11,9 @@ public class GameMain : IObject
 	
 	public override void Initialize(GrobEngineMain game)
     {
+        string title = "GrobEngine Test";
+        game.Window.Title = title;
+        Console.Title = title;
 		Console.WriteLine("Game Initialize");
 		textureLoader = (IObject)Script.LoadScriptFromContent("Game/Scripts/TextureLoad.cs", game.Content);
 		inputTest = (IObject)Script.LoadScriptFromContent("Game/Scripts/InputTest.cs", game.Content);

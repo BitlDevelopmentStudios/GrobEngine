@@ -31,6 +31,9 @@ namespace GrobEngine
             //set the content root directory.
             Content.RootDirectory = "Data";
 
+            //enable high DPI
+            Environment.SetEnvironmentVariable("FNA_GRAPHICS_ENABLE_HIGHDPI", "1");
+
             //load main engine script.
             IEngine tempLoader = (IEngine)Script.LoadScriptFromContent("Engine/Scripts/EngineMain.cs", Content);
 
