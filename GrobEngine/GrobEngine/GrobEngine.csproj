@@ -76,7 +76,7 @@
     <Compile Include="GrobEngine.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Script.cs" />
+    <Compile Include="Helpers\Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FNA\FNA.csproj">
