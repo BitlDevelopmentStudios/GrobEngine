@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA", "FNA\FNA.csproj", "{35253CE1-C864-4CD3-8249-4D1319748E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrobEngine", "FNA-App\GrobEngine.csproj", "{50CF1E9B-2474-4E03-B004-54DDCEC9227F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrobEngine", "GrobEngine\GrobEngine.csproj", "{50CF1E9B-2474-4E03-B004-54DDCEC9227F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
